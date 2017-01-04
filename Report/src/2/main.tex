@@ -1,0 +1,65 @@
+\chapter{Overview}
+Firstly some assumptions about the assignment will be presented, followed by a presentation of the calendar and appointment structures.
+Lastly some shortcomings of the program will be described.
+
+Moreover the source code in this hand--in has been commented such that every method is described.
+
+\section{Assumptions}
+This calendar implemented in Smalltalk was developed with some assumptions regarding the assignment:
+\begin{itemize}
+    \item A calendar does not require content, i.e.~appointment or calendars.\\
+        This means that a calendar can exist without any appointments and/or sub--calendars.
+    \item Methods such as: \texttt{findAppointments}, \texttt{findFirstAppointment}, and\\
+        \texttt{findLastAppointment}, will find appointments in a calendar and any sub--calendars of said calendar, and so forth.
+    \item Appointments represent time using objects from the standard Pharo environment.\\
+        This means that conversion to and from human readable strings, such as \texttt{'1993/06/19 13:37:00'} is done by the already implemented functionality.
+    \item Furthermore any functionality already present in the Pharo environments standard classes will be utilized;
+        instead of implementing something twice.
+    \item Removing appointments or calendars from a calendar, must retain the structure of the original calendar.\\
+        This means that the original calendar must not be flattened.
+    \item However, parts of a calendar, i.e.~appointments and sub--calendar, are not sorted in any way after adding or removing parts.
+\end{itemize}
+
+\section{Structure of Calendars and Appointments}
+The package made during this mini--project, contains two classes: \texttt{Calendar} and \texttt{Appointment}.
+
+Both appointments and calendars can be instantiated using special class methods, thereby creating valid objects.
+
+\subsection{Appointments}
+The \texttt{Appointment} class, inherits from the \texttt{Timespan} class, which provides functionality for defining a start and an end time, as well as detecting intersections with other timespans, i.e.~if they overlap.
+On top of that the \texttt{Appointment} class itself, only has one instance variable, a title.
+The most interesting methods of the \texttt{Appointment} instances are:
+\begin{description}
+    \item[\texttt{overlap: anAppointment}]\hfill\\
+        This methods is implemented using the functionalities of the superclass \texttt{Timespan}.
+        It uses the \texttt{intersects: aContender} methods as described below.
+    \item[\texttt{flattenTo: aList}]\hfill\\
+        This keyword method is used when flattening a calendar, and takes a list as argument.
+        It the adds itself to said list, and returns the list.
+    \item[\texttt{title} and \texttt{title: aTitle}]\hfill\\
+        These methods retrieve and change the title of a receiver appointment instance respectively.
+\end{description}
+
+As mentioned previously the \texttt{Appointment} class inherits from the \texttt{Timespan} class.
+The most used methods from \texttt{Timespan} are:
+\begin{description}
+    \item[\texttt{intersects: aContender}]\hfill\\
+        This methods checks if the timespan \texttt{aContender} intersects with the \texttt{self} timespan.
+    \item[\texttt{starting: aStartTime ending: anEndTime}]\hfill\\
+        This is a class method, and is used to instantiate a new timespan with a given starting and ending.
+        These two times, \texttt{aStartTime} and \texttt{anEndTime} are strings, and can be in a human readable format.
+        The internals of the timespan, and the classes it uses for time keeping, then converts the given strings.
+\end{description}
+
+\subsection{Calendars}
+The \texttt{Calendar} class is rather simple in that it only has two instance variables, \texttt{parts} and \textt{title}.
+
+\section{Shortcomings}
+A weakness of my calendar implementation is, the inability to present the calendar as anything else than an agenda in HTML.
+I would have preferred a week-- or month--calendar output, but due to time constraints this was not done.
+
+Moreover I choose to focus on the core functionality, which means that implementing a solution using Seaside was deemed out of scope.
+However, in retrospect it could have been helpful to use Seaside, had I used the extra time to setup up and learn it, and it would have provided a more polished way of outputting HTML.
+
+
+
