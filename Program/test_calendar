@@ -1,0 +1,10 @@
+cal := Calendar withTitle: 'SW7'.
+pp := Appointment withTitle: 'Programming Paradigms' from: '2016/9/10 8:15:00' to: '2016/9/10 10:00:00'.
+wi := Appointment withTitle: 'Web Intelligence' from: '2016/9/10 10:15:00' to: '2016/9/10 12:00:00'.
+web := Appointment withTitle: 'Web Engineering' from: '2016/9/11 12:30:00' to: '2016/9/11 16:00:00'.
+extra := Appointment withTitle: 'Extra activity' from: '2016/9/10 6:25:00' to: '2016/9/11 18:00:00'.
+calExtra := Calendar withTitle: 'Extra calendar'.
+cal add: pp; add: wi; add: web.
+calExtra add: extra.
+cal add: calExtra.
+cal writeAsHtmlToFile: 'sw7.html' from: '2016/9/10' to: '2016/9/11 23:59:59'.
