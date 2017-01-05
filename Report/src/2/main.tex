@@ -1,5 +1,5 @@
 \chapter{Overview}
-Firstly some assumptions about the assignment will be presented, followed by a presentation of the calendar and appointment structures.
+Firstly some assumptions about the assignment will be presented, followed by a presentation of the calendar and appointment structures including the most significant methods of each.
 Lastly some shortcomings of the program will be described.
 
 Moreover the source code in this hand--in has been commented such that every method is described.
@@ -52,7 +52,29 @@ The most used methods from \texttt{Timespan} are:
 \end{description}
 
 \subsection{Calendars}
-The \texttt{Calendar} class is rather simple in that it only has two instance variables, \texttt{parts} and \textt{title}.
+The \texttt{Calendar} class is rather simple in that it only has two instance variables, \texttt{parts} and \texttt{title}.
+However, the simplicity does not carry on to the messages understood by the \texttt{Calendar}.
+This class contains most of the complexity in the program and the most significant methods are the following:
+\begin{description}
+    \item[\texttt{add: someContent}]\hfill\\
+    This method adds content to the calendar, with \texttt{someContent} being either a collection of calendars and/or appointments, or a single calendar or appointment.
+    \item[\texttt{flattenCalendar}]\hfill\\
+    This method creates and returns a new calendar with the same title as self, and the same content but flattened, i.e.~no sub--calendars but their content.
+    It works by calling \texttt{flattenTo: aList} on all it's children, who then adds themselves if an appointment, or does the same if a calendar.
+    \item[\texttt{removeAll: aBlock}]\hfill\\
+    This method is used to remove content from a calendar, it takes \texttt{aBlock}, and the removes all content which satisfies said block from the parts of the calendar.
+    Note, the block, must return true if something(s) should be removed and false for all other parts.
+    \item[Finding appointments]\hfill\\
+    All these methods use another method \texttt{appointments} which returns a flattened list of all the calendars, and its sub--calendars appointments.
+    They then use this flattened list to carry out the desired functionality.
+
+    \texttt{findAppointments: aBlock} finds all appointments which satisfies aBlock,
+    whereas \texttt{findFirstAppointment: aBlock} and \texttt{findLastAppointment: aBlock}
+    sorts the results and only returns the first and last appointment respectively.
+    \item[\texttt{presentAsHTMLFrom: aStartTime to: anEndTime}]\hfill\\
+    This method return a string conforming to HTML, representing the calendar as an day--by--day agenda.
+    The output will only contain the appointments within the range of \texttt{aStartTime} to \texttt{anEndTime}.
+\end{description}
 
 \section{Shortcomings}
 A weakness of my calendar implementation is, the inability to present the calendar as anything else than an agenda in HTML.
@@ -60,6 +82,3 @@ I would have preferred a week-- or month--calendar output, but due to time const
 
 Moreover I choose to focus on the core functionality, which means that implementing a solution using Seaside was deemed out of scope.
 However, in retrospect it could have been helpful to use Seaside, had I used the extra time to setup up and learn it, and it would have provided a more polished way of outputting HTML.
-
-
-

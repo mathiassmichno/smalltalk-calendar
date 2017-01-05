@@ -1,82 +1,72 @@
 \chapter{Reflections}
-In this chapter, I will reflect upon different aspects of the functional paradigm.
+This chapter is used for reflecting upon differenct aspects of the object oriented paradigm, aswell as dynamic typing and the actor paradigm.
 
-At the time of writing I have completed the Lisp calendar language mini project,
-and because of this the reflections will be heavily influenced by the mini project assignment.
-\section{Functional Programming --- A New Experience}
-During development of my Lisp calendar language, I worked in a ``pure'' functional paradigm for the first time.
-Usually multi--paradigm languages with imperative and object--oriented point of views, such as Python, Java or C\#,
-are my first choice when starting a new software project;
-but my newfound experiences with functional programming through Scheme,
-only confirms the idea that the chosen paradigm should be based on the notion of \textit{the right tool for the job}.
-This means that certain problems are more easily solved in the functional paradigm, whereas other problems benefit from e.g. OOP.
+\section{Object Oriented Programming --- Something I used to know}
+My first experience in the object oriented part of the PP course, was getting told that what I knew as object oriented programming, was a lie.
+That is to say, what I had been taught was a watered down version, with mixins from numerous other paradigms.
+Initially, I put off the accusation, partly due to the face that I have completed a course called \enquote{Object Oriented Programming}.
+But as the lecture in \enquote{true} OOP carried on, I quickly realized that the object oriented purity of Smalltalk was unmatched by any programming language I had ever seen.
 
-\medskip
-As I came from a background heavily influenced by imperative programming, the notion of \textbf{side--effects} used to play a big role in my software.
-One could say that the software I used to write (or usually write) is dependent upon \textbf{state},
-so when I had to program in the functional paradigm, it was hard at first to put the use of state behind me.
-However after programming the first few functions I quickly became accustomed to the \textbf{stateless} nature of FP,
-and what at first was a hindering, quickly felt like an advantage.
+\bigskip
+After having completed the first mini--project, and hereby implemented a calendar in a purely functional programming language,
+I found the outlook of using a object oriented language to do the same implentation rather comforting.
+Although working in the functional paradigm had proven to be quite plessant and more important very powerfull,
+the implementation details of a calendar seemed to fit better with the way of modelling in object oriented languages.
 
-\medskip
-Also \textbf{stateless} programming encourages the use and implementation of \textbf{pure functions},
-since it is the only way to program without state.
-However more and more programming outside FP, tends to implement pure functions, and then simulate state in the arguments passed to the functions, and their return values.
-This is just one of the many things from functional programming, which have improved many non--functional--languages.
+\bigskip
+Moreover the notion of mutability, and variables was something I missed in the functional paradigm, as these concepts are key parts of most programming I regulary use.
+These are multi--paradigm programming languages such as Python, Java, C\#, and JavaScript.
+They all borrow from both the functional and the object oriented paradigm, and thus enbodies the best of both worlds --- or ruins the pure experience as some might state.
 
-\medskip
-Another thing which required a different frame of mind when starting in the functional paradigm, was the idea of \textit{functions as data}.
-The use and presence of \textbf{higher order functions} in FP, is in my opinion one of the most powerful concepts in functional programming.
-Coming from imperative and object--oriented languages, data consists mostly of types such as numbers, strings, and objects, but in the functional paradigm,
-functions flows like data.
-The ability to use functions as arguments and return values, is very powerful and I experienced that it yielded greater flexibility and composability,
-while developing the lisp calendar language.
-
-\medskip
-In functional programming since recursion if heavily used, the programmer must implement \textbf{tail--recursive} functions if he does not want to risk the stack growing out of control.
-Fortunately the syntax of Scheme makes it easy to identify tail--recursion.
-However the immense difference in the semantics between regular recursive and tail--recursive functions, is not adequately reflected in the syntax, in my opinion.
-
-\section{Pros and Cons of the Functional Paradigm}
-A general con of languages which are defined as ``pure'' functional languages,
-is that modelling data can be quite cumbersome, and the complexity of real world domains
-can be difficult to translate into a problem which can be solved in the functional paradigm.
-
-That being said, functional languages encourages the programmer to take a more ``mathematical'' approach in my opinion, which sometimes is easier to resonate about after the fact.
-By this I mean, that programs written in the functional paradigm, can be more easily understood, provided you can understand the syntax of the given language.
-
-\subsection{Statelessness}
-As previously discussed the \textbf{stateless} nature of FP, can be both a pro and con.
-For programmers thinking in an ``imperative'' way, it can be hard to adapt to programming without state,
-however if one can program without relying on state, even imperative programs can benefit.
-Programs without \textbf{state} are by nature easily scalable, testable and can be replaced by another piece of code,
-as long as the interface, i.e. way of input / output of the piece of code, is the same.
-
-The scalability of stateless programming also makes the functional paradigm ideal for multithreading and/or multiprocessing.
-
-\subsection{Functions as Data --- Higher Order Functions}
-I previously touched upon the use of higher order functions, which is a fundamental component in the functional paradigm.
-
-I found that in developing the Lisp calendar language, creating higher order functions, allowed me to do powerful things;
-such as only applying a function if the input was valid (as I did with \texttt{with-calendar} and \texttt{with-appointment}).
-Moreover the ability to map a function to a list is very powerful, and as I progressed in the mini project, I used it more and more.
-
-Higher order functions enables the composability of functions, but the programmer must be cautious!
-When using higher order functions it is extremely important to use pure functions, because functions which might be stateful or set global state, will have unforeseen side--effects.
-
-\medskip
-Taking everything into consideration, the composability in functional programming, makes it extremely powerful.
-I found that with relatively few functions I could solve, what seemed to be complex problems, by simply composing smaller building blocks.
+\bigskip
+As with programming in the functional paradigm and specificly Scheme, Smalltalk does not have special syntax for thing like control structures.
+In fact the syntax of Smalltalk is extremely simple and therefore needs the environment around it, in my case Pharo, to be powerfull.
 
 \section{Dynamic versus Static Typing}
-I am of the opinion that as with paradigms there is also a right tool for the job,
-when it comes to typing.
+In my book, choosing the right tool for the job, is not something that only applies to programming paradigm but also type typing.
+Some problems require static typing to be developed and/or maintained correctly, while other bennifit greatly from the freedom of dynamic type systems.
 
-Dynamic typing makes programming significantly more easy at first and prototyping systems benefits from it --- at least in my experience.
-However with static typing comes great benefits such as the possibility for better tooling (e.g.~Intellisense).
-Moreover large systems and projects, especially when multiples people are working on them, can suffer with dynamic typing, since you loose the type security.
-Also, with static types a compiler can do some clever analysis of the code, which can then be used to optimize and catch errors.
+For instance, programming languages with dynamic typing are often supiriour when it comes to prototyping, and makes it easier to dive right in --- at least in my experience.
+However, tooling for programming languages with dynamic typing often fall short when compared to that of staticly typed languages.
+Take for example Intellisense, a great tool that only exists, because of the type system in place in C\#, which can infer and predict certain things about the system.
 
-While it may seem like I generally prefer static typing this is not the case.
-I believe that the benefits provided with dynamic typing outshine the cons.
-The flexibility and turn--around--time of code is unmatched by statically typed languages.
+\bigskip
+When dealing with larger projects and the systems thereof, especially those with a lot of people working on them,
+using dynamic typing can influence the robustness and development negatively, since you loose the type security.
+
+Static typing can give some guarentees, which otherwise must be reached with testing and checking done by the programmer, this can be cumbersome and is error prone.
+Moreover, staticly typed languages can catch some errors at compile time, and even do code analysis and optimizations, which just not are possible in dynamicly typed languages.
+
+\bigskip
+Personally, I think that the benefits of dynamically typed languages are greater than the cons.
+The turn--around--time of code and flexibility is in my opinion unmatched by statically typed languages.
+
+As long as the programmer utilises duck typing, dynamically typed languages can be incredibelly powerful.
+Moreover, the ability to easily do dynamic dispatch as I did with the \texttt{flattenTo: aList} method, which both Appointments and Calendars have,
+is extremely easy and powerful; and the implicitness of interfaces reduces the amount of boilerplate code which can be very cumbersome to write.
+Basically, as long as some object understands a specific message, I do not care about what \enquote{type} it is.
+
+\section{Modern Languages}
+In the first mini--project I used Scheme, which was created in the 1970s, as was Smalltalk which I used in this mini--project.
+How could using a modern language have benefitted my solutions?
+Well, I believe that the final product would not have differed much, at least in functionality.
+
+The thing with choosing a modern language is that often you end up with a less mature language, or a language that tries to innovate on something that works just fine in older languages.
+A common trait for both Scheme and Smalltalk, is the simplicity of the syntax, however, using their simple syntax one can implement the solutions of the calendar exercise just fine.
+Nevertheless I do believe that some features of the more modern programming languages, and the fact that often the communities around them are more active, could be a pro when using them.
+
+\section{The Actor Paradigm}
+Taking the implementation to an entirely new paradigm, what might have differed in the actor paradigm?
+Allthough the Smalltalk objects closely match what an actor is, the pure actor paradigm would bring better ability to do computations concurrently.
+The alternative name for the actor paradigm is the concurrency paradigm, and I do not doubt that the computational model of the actor paradigm, is significantly better at utilizing multicore systems.
+
+Even thought most programming languages have things as threads and multi--processing, they also have locks, and mutexes;
+and more often than not multi--core utilization is a hindrence to both the development process and execution of code.
+
+However, since messges in the actor paradigm are received asynchronosly, one must be careful and ensure synchronization in cases where it is nessecary.
+Take for example a banking account; if one actor representing the banking account with a balance of 2 dollars,
+and two seperate actors does a deposit of 4 dollars and a withdrawel of 5 dollars respectively,
+one can not guarentee that the 4 dollars are deposited before the withdrawel of 5 dollars is tried.
+
+That being said, certain guarentees can be made --- e.g. we can guarentee that one action will always complete before starting the next,
+which means that the worst case scenario in the example above is that the withdrawel is declined.
