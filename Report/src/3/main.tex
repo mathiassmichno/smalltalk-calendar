@@ -13,7 +13,6 @@ I found the outlook of using a object oriented language to do the same implement
 Although working in the functional paradigm had proven to be quite pleasant and more important very powerful,
 the implementation details of a calendar seemed to fit better with the way of modelling in object oriented languages.
 
-\bigskip
 Moreover the notion of mutability, and variables was something I missed in the functional paradigm, as these concepts are key parts of most programming I regularly use.
 These are multi--paradigm programming languages such as Python, Java, C\#, and JavaScript.
 They all borrow from both the functional and the object oriented paradigm, and thus embodies the best of both worlds --- or ruins the pure experience as some might state.
@@ -21,6 +20,15 @@ They all borrow from both the functional and the object oriented paradigm, and t
 \bigskip
 As with programming in the functional paradigm and specifically Scheme, Smalltalk does not have special syntax for thing like control structures.
 In fact the syntax of Smalltalk is extremely simple and therefore needs the environment around it, in my case Pharo, to be powerful.
+With Scheme we have a powerful base library and the composistion of functions makes it very powerful.
+
+\bigskip
+One strength of functional programming in contrast to object oriented, is the statelessness, which ensures that side effects are not present.
+Moreover, when I was developing the calendar in a functional programming language, I found myself constantly compositing functions to reach the desired functionality.
+This approach somewhat caried on into the object oriented implementation, and as such code reuse is highly used in both paradigms.
+All in all, I found that the object oriented approach, was easier to maintain;
+and I believe that had the problem embodied additional complexity,
+the solution adhering to the functional paradigm would have suffered from incalculable code with low maintainability.
 
 \section{Dynamic versus Static Typing}
 In my book, choosing the right tool for the job, is not something that only applies to programming paradigm but also type typing.
