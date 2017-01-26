@@ -1,6 +1,6 @@
 {
   "name": "Report",
-  "description": "PP Mini Project Lisp Report",
+  "description": "PP Mini Project Smalltalk Report",
   "version": "9.1.1",
   "private": true,
   "devDependencies": {
