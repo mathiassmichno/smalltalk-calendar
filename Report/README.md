@@ -1,1 +1,1 @@
-run ``grunt`` in this folder to compile and view pdf
+use ``npm install`` in this folder, then run ``grunt`` to compile and view pdf
